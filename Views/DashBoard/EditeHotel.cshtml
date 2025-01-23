@@ -1,0 +1,69 @@
+﻿@model Hotel
+@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+
+<div class="row mt-5">
+    <div class="col">
+        <div class="card mt-5">
+            <form asp-action="UpdateHotel" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="col">
+                        <label class="form-label">اسم الفندق </label>
+                        <input type="text" asp-for="Name" class="form-control" />
+
+                    </div>
+                    <div class="col">
+                        <lable class="form-label">وصف الفندق</lable>
+                        <input type="text" asp-for="Description" class="form-control" />
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label">صورة الفندق</label>
+                        <input type="file" name="photo" class="form-control" />
+
+                    </div>
+                    <div class="col">
+                        <label class="form-label">المدينة</label>
+                        <input type="text" asp-for="City" class="form-control" />
+
+                    </div>
+
+                    <div class="col">
+                        <label class="form-label">السعر</label>
+                        <input type="text" asp-for="Price" class="form-control" />
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label"> التفاصيل</label>
+                        <input type="text" asp-for="Facility" class="form-control" />
+
+                    </div>
+                </div>
+
+
+                <div class="row mt-3">
+                    <div class="col">
+                        <button type="submit" class="btn-hover color-1">حفظ</button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

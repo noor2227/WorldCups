@@ -1,0 +1,204 @@
+﻿@model IEnumerable<Categries>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="mt5"></div>
+<div class="container">
+    <div class="hero-section text-center">
+        <img src="https://i.postimg.cc/nM8MfC2C/fff.webp" alt="World Cup Banner" class="img-fluid rounded mb-4">
+        <h1 class="display-4">كأس العالم في السعودية 2034</h1>
+        <p class="lead">انضم إلينا في هذه الاحتفالية العالمية واستمتع بأفضل ما تقدمه كرة القدم العالمية. إليك أبرز الفعاليات التي تنتظرك:</p>
+    </div>
+
+    <div class="container mt-5">
+        <div class="grid-container">
+            @foreach (var items in Model)
+            {
+                <div class="grid-item">
+                    <a asp-action=@items.Url>
+                        <h2>@items.Name</h2>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="interactive-section mt-5 text-center">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="interactive-box">
+                    <img src="https://i.postimg.cc/DzYxdT5x/lll.jpg" alt="Stadium" class="img-fluid rounded-circle mb-4">
+                    <h4>الملاعب</h4>
+                    <p>اكتشف الملاعب المذهلة التي ستستضيف المباريات.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="interactive-box">
+                    <img src="https://i.postimg.cc/cCZZZwYg/SaveClip.webp" alt="Culture" class="img-fluid rounded-circle mb-4">
+                    <h4>الفعاليات الثقافية</h4>
+                    <p>استمتع بالفعاليات الثقافية المتنوعة التي تعكس التراث الغني.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="interactive-box">
+                    <img src="https://i.postimg.cc/BnQF4wG3/hotel-exterior.jpg" alt="Tickets" class="img-fluid rounded-circle mb-4">
+                    <h4>التذاكر والإقامة</h4>
+                    <p>احجز تذاكرك وأماكن إقامتك بسهولة.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="innovative-section mt-5">
+        <h3 class="text-center">معلومات إضافية عن كأس العالم 2034</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info-box">
+                    <h4>📅 تواريخ البطولة</h4>
+                    <p>ستقام البطولة من 1 يونيو حتى 15 يوليو 2034. ستكون هذه الفترة مليئة بالإثارة والمباريات الحماسية.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-box">
+                    <h4>🌍 المدن المستضيفة</h4>
+                    <p>تشمل المدن المستضيفة الرياض، جدة، الدمام، مكة المكرمة، والمدينة المنورة. كل مدينة ستقدم تجربة فريدة للجماهير.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="info-box">
+                    <h4>🔴 الفعاليات الترفيهية</h4>
+                    <p>سيتضمن الحدث فعاليات ترفيهية متنوعة مثل العروض الموسيقية، المعارض الفنية، والمهرجانات التقليدية.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-box">
+                    <h4>🏅 تجربة المشجعين</h4>
+                    <p>تجربة مشجعي كأس العالم ستكون مثيرة مع العديد من الأنشطة والفعاليات التي تلبي اهتمامات الجميع.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<style>
+    body {
+        font-family: 'Cairo', sans-serif;
+        background-color: #f0f8ff;
+        color: #333;
+    }
+
+    .hero-section {
+        background-color: #003366;
+        color: white;
+        padding: 50px 0;
+    }
+
+    .card-deck .card {
+        background-color: #e6f2ff;
+        border: none;
+        transition: transform 0.3s;
+    }
+
+        .card-deck .card:hover {
+            transform: translateY(-10px);
+        }
+
+    .interactive-section .interactive-box {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .interactive-section .interactive-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+    .interactive-section img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+    }
+
+    .interactive-section h4 {
+        font-size: 24px;
+        margin: 10px 0;
+        color: #003366;
+    }
+
+    .interactive-section p {
+        font-size: 16px;
+        margin: 0;
+        color: #666;
+    }
+
+    .innovative-section {
+        background-color: #e0f7fa;
+        padding: 40px 20px;
+        border-radius: 10px;
+    }
+
+        .innovative-section h3 {
+            color: #00796b;
+            margin-bottom: 30px;
+        }
+
+    .info-box {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .info-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-box h4 {
+            color: #00796b;
+        }
+
+        .info-box p {
+            color: #666;
+        }
+
+    .grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .grid-item {
+        background-color: #e6f2ff;
+        border: none;
+        transition: transform 0.3s;
+        width: 30%;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .grid-item h2 {
+            font-size: 20px;
+            color: #003366;
+        }
+</style>
+
+

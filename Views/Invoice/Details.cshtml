@@ -1,0 +1,256 @@
+﻿@model Invoice
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فاتورة وهمية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            font-size: 16px;
+            line-height: 24px;
+            color: #555;
+        }
+
+            .invoice-box table {
+                width: 100%;
+                line-height: inherit;
+                text-align: left;
+            }
+
+                .invoice-box table td {
+                    padding: 5px;
+                    vertical-align: top;
+                }
+
+                .invoice-box table tr td:nth-child(2) {
+                    text-align: right;
+                }
+
+                .invoice-box table tr.top table td {
+                    padding-bottom: 20px;
+                }
+
+                    .invoice-box table tr.top table td.title {
+                        font-size: 45px;
+                        line-height: 45px;
+                        color: #333;
+                    }
+
+                .invoice-box table tr.information table td {
+                    padding-bottom: 40px;
+                }
+
+                .invoice-box table tr.heading td {
+                    background: #eee;
+                    border-bottom: 1px solid #ddd;
+                    font-weight: bold;
+                }
+
+                .invoice-box table tr.details td {
+                    padding-bottom: 20px;
+                }
+
+                .invoice-box table tr.item td {
+                    border-bottom: 1px solid #eee;
+                }
+
+                .invoice-box table tr.item.last td {
+                    border-bottom: none;
+                }
+
+                .invoice-box table tr.total td:nth-child(2) {
+                    border-top: 2px solid #eee;
+                    font-weight: bold;
+                }
+    </style>
+</head>
+<body>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="https://via.placeholder.com/150" style="width:100%; max-width:300px;">
+                            </td>
+                            <td>
+                                رقم الفاتورة: @Model.Number<br>
+                                التاريخ: @Model.Date.ToString("dd MMMM yyyy")<br>
+                                مستحق: @Model.DueDate.ToString("dd MMMM yyyy")
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                شركة وهمية<br>
+                                شارع وهمي<br>
+                                مدينة وهمية، دولة وهمية
+                            </td>
+                            <td>
+                                @Model.CustomerName<br>
+                                بريد إلكتروني: @Model.CustomerEmail
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="heading">
+                <td>
+                    طريقة الدفع
+                </td>
+                <td>
+                    التفاصيل
+                </td>
+            </tr>
+            <tr class="details">
+                <td>
+                    بطاقة ائتمان
+                </td>
+                <td>
+                    1234-5678-9012-3456
+                </td>
+            </tr>
+            <tr class="heading">
+                <td>
+                    المنتج
+                </td>
+                <td>
+                    السعر
+                </td>
+            </tr>
+            @foreach (var item in Model.Items)
+            {
+                <tr class="item">
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Price.ToString("C")
+                    </td>
+                </tr>
+            }
+            <tr class="total">
+                <td></td>
+                <td>
+                    الإجمالي: @Model.Items.Sum(i => i.Price).ToString("C")
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script>
+        const { jsPDF } = window.jspdf;
+        function generatePDF() {
+            const doc = new jsPDF();
+            doc.text("فاتورة وهمية", 10, 10);
+            // أضف المزيد من النصوص والتنسيقات هنا
+            doc.save("invoice.pdf");
+        }
+
+        function addToCart(invoice) {
+            const invoiceContainer = document.getElementById('invoice-container');
+            invoiceContainer.innerHTML = `
+                <div class="invoice-box">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr class="top">
+                            <td colspan="2">
+                                <table>
+                                    <tr>
+                                        <td class="title">
+                                            <img src="https://via.placeholder.com/150" style="width:100%; max-width:300px;">
+                                        </td>
+                                        <td>
+                                            رقم الفاتورة: ${invoice.Number}<br>
+                                            التاريخ: ${new Date(invoice.Date).toLocaleDateString()}<br>
+                                            مستحق: ${new Date(invoice.DueDate).toLocaleDateString()}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="information">
+                            <td colspan="2">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            شركة وهمية<br>
+                                            شارع وهمي<br>
+                                            مدينة وهمية، دولة وهمية
+                                        </td>
+                                        <td>
+                                            ${invoice.CustomerName}<br>
+                                            بريد إلكتروني: ${invoice.CustomerEmail}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="heading">
+                            <td>
+                                المنتج
+                            </td>
+                            <td>
+                                السعر
+                            </td>
+                        </tr>
+                        ${invoice.Items.map(item => `
+                            <tr class="item">
+                                <td>
+                                    ${item.Name}
+                                </td>
+                                <td>
+                                    ${item.Price.toFixed(2)}
+                                </td>
+                            </tr>
+                        `).join('')}
+                        <tr class="total">
+                            <td></td>
+                            <td>
+                               الإجمالي: ${invoice.Items.reduce((total, item) => total + item.Price, 0).toFixed(2)}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+        }
+
+        // مثال على كيفية استدعاء الدالة
+        const exampleInvoice = {
+            Number: "123",
+            Date: new Date(),
+            DueDate: new Date(new Date().setDate(new Date().getDate() + 7)),
+            CustomerName: "العميل الوهمي",
+            CustomerEmail: "client@example.com",
+            Items: [
+                { Name: "منتج 1", Price: 300.00 },
+                { Name: "منتج 2", Price: 150.00 },
+                { Name: "منتج 3", Price: 50.00 }
+            ]
+        };
+
+    </script>
+    <button onclick="generatePDF()">تصدير إلى PDF</button>
+
+   
+   
+</body>
+</html>

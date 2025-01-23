@@ -1,0 +1,91 @@
+﻿@model IEnumerable<studium1>
+@{
+}
+
+<div class="text-center">
+    <h1> <strong>الملاعب</strong></h1>
+    <div class="row">
+        <div class="col-sm-8"></div>
+        <div class="col-sm-4 sm-12"></div>
+    </div>
+</div>
+
+<div class="container card-container mt-5">
+    <div class="grid-container">
+        @foreach (var items in Model)
+        {
+            <div class="grid-item">
+                <img src="/iamges/@items.Iamges" width="200" height="200" />
+                <h2>@items.Name</h2>
+                <p>المكان: @items.city</p>
+                <p>المالك: @items.Owner</p>
+                <p>طول الملعب: @items.Length</p>
+                <p>عرض الملعب: @items.Width</p>
+                <ul class="facility-list">
+                    @foreach (var i in items.Facility)
+                    {
+                        <li><small class="text-muted">@i</small></li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .grid-container {
+        display: flex; /* عرض الكروت في صف واحد */
+        overflow-x: auto;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .grid-item {
+        background-color: #fff; /* لون الخلفية */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* الظل */
+        transition: transform 0.3s, box-shadow 0.3s;
+        flex: 0 0 auto; /* تثبيت العرض */
+        width: 300px; /* عرض العنصر */
+    }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* الظل */
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .grid-item h2 {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #000957;
+        }
+
+        .grid-item p {
+            font-size: 16px;
+            margin: 0;
+            color: #666;
+        }
+
+    .facility-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 10px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+        .facility-list li {
+            background-color: #f1f1f1;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+</style>
+

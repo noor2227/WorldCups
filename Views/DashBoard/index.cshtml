@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+<section class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="header-image">
+                    <img src="assets/images/helloworld.jpg" alt="Image" class="img-fluid"/>
+                    <div class="position-absolute top-50 start-50 translate-middle text-center text-white" style="font-family: 'Arial', sans-serif;">
+                        <h1 class="page-title" style="font-size: 3rem; font-weight: bold;">وراء تنظيم عظيم , دولة عظيمة  </h1>
+                        <p style="font-size: 1.5rem;">نحن هنا لنوفر لك تجربة لا مثيل لها في إدارة الخدمات الفندقية والنقل والمباريات.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكروت -->
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card shadow-lg border-0 rounded-3 bg-white text-black h-100">
+                    <div class="card-body" style="font-family: 'Arial', sans-serif;">
+                        <h5 class="card-title" style="font-size: 1.75rem; font-weight: bold;">تجربة فريدة</h5>
+                        <p class="card-text" style="font-size: 1.2rem;">أفضل إدارة في مكان واحد. من خلال موقعنا، يمكنك الوصول إلى جميع الخدمات التي تحتاجها بسهولة تامة، مما يوفر لك راحة البال.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-lg border-0 rounded-3 bg-white text-black h-100">
+                    <div class="card-body" style="font-family: 'Arial', sans-serif;">
+                        <h5 class="card-title" style="font-size: 1.75rem; font-weight: bold;">رؤية 2030</h5>
+                        <p class="card-text" style="font-size: 1.2rem;">نحن جزء من رؤية المملكة 2030 التي تهدف إلى تعزيز مكانة المملكة في السياحة الدولية وتطوير البنية التحتية.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-lg border-0 rounded-3 bg-white text-black h-100">
+                    <div class="card-body" style="font-family: 'Arial', sans-serif;">
+                        <h5 class="card-title" style="font-size: 1.75rem; font-weight: bold;">سهولة الاستخدام</h5>
+                        <p class="card-text" style="font-size: 1.2rem;">راحة تامة للمستخدمين من خلال واجهة مستخدم سهلة ومتجاوبة، نقدم لك تجربة تفاعلية تتيح لك الوصول إلى جميع الخدمات بسلاسة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الكرت الكبير -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card shadow-lg border-0 rounded-3 bg-dark text-white">
+                    <div class="card-body text-center" style="font-family: 'Arial', sans-serif;">
+                        <h5 class="card-title" style="font-size: 2rem; font-weight: bold;">استمتع بتجربة لا مثيل لها</h5>
+                        <p class="card-text" style="font-size: 1.2rem;">ابدأ في استخدام خدماتنا المبتكرة لتجربة فريدة من نوعها ولا تُنسى.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .header-image {
+        width: 100%;
+        height: 79vh; /* نصف الصفحة */
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header-image img {
+        object-fit: cover; /* للحصول على صورة واضحة تغطي المساحة المحددة */
+        width: 100%;
+        height: 100%;
+        object-position: center; /* لضمان وضوح الصورة من الوسط */
+    }
+
+    .header-image .position-absolute {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .card {
+        margin-bottom: 30px; /* لضمان المسافة بين الكروت */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* ظل عصري */
+    }
+
+    .card.bg-dark {
+        background-color: #001f3f; /* اللون الكحلي */
+    }
+</style>

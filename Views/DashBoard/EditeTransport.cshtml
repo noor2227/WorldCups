@@ -1,0 +1,108 @@
+﻿@model Transport
+@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+    var getdata = ViewBag.getdata;
+}
+
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card mt-5">
+                <form asp-action="UpdatesTransport" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="col">
+                            <label class="form-label">السعة  </label>
+                            <input type="text" asp-for="Capacity" class="from-control" />
+
+                        </div>
+                        <div class="col">
+                            <lable class="form-label">الفئة  </lable>
+                            @if (getdata != null)
+                            {
+                                <select class="form-select" asp-for="vehicle">
+                                    <option>اختر البيانات</option>
+                                    @foreach (var item in getdata)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            }
+                          
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">اسم السيارة </label>
+                            <input type="text" asp-for="Name" class="from-control" />
+
+                        </div>
+                        <div class="col">
+                            <label class="form-label">لون السيارة</label>
+                            <input type="text" asp-for="color" class="from-control" />
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">صورة</label>
+                                <input type="file" name="photo" class="form-control" />
+
+                            </div>
+
+
+                            <div class="col">
+                                <label class="form-label">موديل السيارة</label>
+                                <input type="text" asp-for="Model" class="form-control" />
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">فيرجن السيارة</label>
+                                <input type="text" asp-for="ModelVersion" class="form-control" />
+
+                            </div>
+                            <div class="col">
+                                <label class="form-label"> ممشى السيارة</label>
+                                <input type="text" asp-for="Km" class="from-control" />
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label"> التفاصيل</label>
+                            <input type="text" name="Facility" class="from-control" />
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <button type="submit" class="btn-hover color-1">حفظ</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

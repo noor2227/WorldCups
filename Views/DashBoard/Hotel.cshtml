@@ -1,0 +1,140 @@
+﻿@model IEnumerable<Hotel>
+@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+<div class="modal" tabindex="-2" id="del">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> تاكيد الحذف</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>هل بالفعل تريد الحذف</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغاء الامر</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="confirm_delete1()"> حذف</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card mt-5">
+                <form asp-action="CreateNewHotel" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">اسم الفندق </label>
+                            <input type="text" name="Name" class="form-control" />
+
+                        </div>
+                        <div class="col">
+                            <lable class="form-label">وصف الفندق</lable>
+                            <input type="text" name="Description" class="form-control" />
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">صورة الفندق</label>
+                            <input type="file" name="photo" class="form-control" />
+
+                        </div>
+                        <div class="col">
+                            <label class="form-label">المدينة</label>
+                            <input type="text" name="City" class="form-control" />
+
+                        </div>
+
+                        <div class="col">
+                            <label class="form-label">السعر</label>
+                            <input type="text" name="Price" class="form-control" />
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label"> التفاصيل</label>
+                            <input type="text" name="Facility" class="form-control" />
+
+                        </div>
+                        </div>
+
+                        
+
+                    
+
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <button type="submit" class="btn-hover color-1">حفظ</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card">
+                <div class=" card-body">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                        <td>رقم الفندق</td>
+                        <td>اسم الفندق</td>
+                        <td>وصف الفندق</td>
+                        <td>المدينة</td>
+                        <td>سعر الفندق</td>
+                          <td>الصورة </td>
+                                <td class="text-center" colspan="2">2اجراء</td>
+                            </tr>
+
+                        </thead>
+                        <thody>
+                            @foreach(var items in Model){
+                                <tr>
+                                    <td>@items.Id</td>
+                                    <td>@items.Name </td>
+                                    <td>@items.Description </td>
+                                    <td>@items.City</td>
+                                    <td>@items.Price</td>
+                                    <td><img src="/iamges/@items.Images" width="60" height="60" class="rounded rounded-circle"/> صورة</td>
+
+
+                                    <td> <a onclick="showmassage(@items.Id)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a> </td>
+
+                                    <td>
+                                        <a asp-action="EditeHotel" asp-route-id="@items.Id"><i class="fa fa-list" aria-hidden="true"></i></a>
+
+
+                                    </td>
+
+                                </tr>
+
+                            }
+                           
+                        </thody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

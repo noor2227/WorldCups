@@ -1,0 +1,96 @@
+﻿@model TableFootbul
+@{
+    Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+    var getdata = ViewBag.getdata;
+    var getdatatableFootbul = ViewBag.getdatatableFootbul;
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card mt-5">
+                <form asp-action=" UpdateTableFootbul" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="col">
+                            <label for="Name">اسم الملعب</label>
+                            <input type="text" class="form-control" id="Name" asp-for="Name">
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                        <div class="col">
+                            <lable class="form-label"> المدينة</lable>
+                            <input type="text" asp-for="Ctiy" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Ctiy"></span>
+
+                        </div>
+
+                    </div>
+
+                    
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label"> الملعب</label>
+                            @if (getdata != null)
+                            {
+                                <select class="form-select" asp-for="studium1_id">
+                                    <option>اسم الملعب</option>
+                                    @foreach (var item in getdata)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            }
+                           
+                            
+                                
+                            
+
+                           
+
+                        </div>
+                        <div class="col">
+                            <label class="form-label">الفريق الاول</label>
+                            <input type="text" asp-for="Ateam1" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Ateam1"></span>
+
+                        </div>
+
+                       
+
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">الفريق الثاني</label>
+                            <input type="text" asp-for="Ateam2" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Ateam2"></span>
+
+                        </div>
+
+                        <div class="col">
+                            <label class="form-label"> وقت المبارات</label>
+                            <input type="text" asp-for="MatchTime" class="form-control" />
+                            <span class="text-danger" asp-validation-for="MatchTime"></span>
+
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <button type="submit" class="btn-hover color-1">حفظ</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h1 class="alert alert-secondary">@TempData["Save"]</h1>
+                        </div>
+
+                    </div>
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
